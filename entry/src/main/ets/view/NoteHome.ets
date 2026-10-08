@@ -4,9 +4,12 @@ interface NoteItem {
   update: string
 }
 
-@Component
-export struct Note {
-  @State list: NoteItem[] = [
+@ComponentV2
+export struct NoteHome {
+
+  @Consumer('NavPathStack') MainStack: NavPathStack = new NavPathStack();
+
+  @Local list: NoteItem[] = [
     {title:"桌面整理计划", content:"今天计划整理桌面，把文件分类存放", update: '今天9:23'},
     {title:"周末户外散心", content:"周末打算出门散步，去公园看看花草，放松一下", update: '昨天10:00'},
     {title:"ArkUI学习笔记", content:"学习ArkUI开发，练习WaterFlow瀑布流组件，熟悉FlowItem使用，掌握卡片布局和文本截断相关API。", update: '昨天15:50'},
@@ -45,19 +48,18 @@ export struct Note {
         .columnsGap(10)
         .rowsGap(10)
         .padding(12)
-      }
+      }.edgeEffect(EdgeEffect.Spring)
 
 
       Button(){
         Image($r('app.media.plus')).width(26).fillColor('#333')
       }.width(50).height(50).borderRadius(50).position({right:12, bottom: 12})
       .backgroundColor('#fff')
-      .shadow({
-        radius: 12,
-        color: '#33000000',
-        offsetX: 0,
-        offsetY: 0
+      .shadow({ radius: 12, color: '#33000000', offsetX: 0, offsetY: 0 })
+      .onClick(()=>{
+        this.MainStack.pushPath({ name: 'NoteContent' });
       })
+
     }
     .width('100%')
     .height('100%')
