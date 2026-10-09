@@ -1,6 +1,11 @@
 import relationalStore from '@ohos.data.relationalStore';
 import common from '@ohos.app.ability.common';
 
+/*
+* DB_NAME：设置数据库名称
+* DB_VERSION：设置版本
+*/
+
 const DB_NAME = 'LiteNote.db';
 const DB_VERSION = 1;
 
@@ -14,7 +19,7 @@ const DB_VERSION = 1;
 * update_time：备忘录最后更新时间（系统自动更改）
 */
 
-const CREATE_NOTE_TABLE = `CREATE TABLE IF NOT EXISTS Note (
+const CREATE_NOTE_TABLE = `CREATE TABLE IF NOT EXISTS Note_Table (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   title TEXT NOT NULL,
   content TEXT,

@@ -1,0 +1,9 @@
+{
+  "routerMap": [
+    {
+      "name": "NoteContent",
+      "pageSourceFile": "src/main/ets/view/NoteContent.ets",
+      "buildFunction": "NoteContentBuilder"
+    }
+  ]
+}
